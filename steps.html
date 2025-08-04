@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>साप्ताहिक इंटर्न ट्रेनिंग - 4 Module Structure</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .module-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .module-1 { border-left-color: #3b82f6; }
+        .module-2 { border-left-color: #10b981; }
+        .module-3 { border-left-color: #f59e0b; }
+        .module-4 { border-left-color: #ef4444; }
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-12">
+        <div class="container mx-auto px-6 text-center">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-white bg-opacity-20 rounded-full mb-4">
+                <span class="text-2xl">✅</span>
+            </div>
+            <h1 class="text-4xl font-bold mb-4">साप्ताहिक इंटर्न ट्रेनिंग</h1>
+            <p class="text-xl opacity-90">4 Module Structure</p>
+            <div class="mt-6 text-sm opacity-80">
+                <p>बहुत बढ़िया, आपने चार स्पष्ट सेवाओं को पहचाना है — अब इन्हीं को हम चार <strong>ट्रेनिंग मॉड्यूल</strong> के रूप में structured, step-by-step रूप में बना रहे हैं।</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+        <!-- Introduction -->
+        <div class="bg-white rounded-lg shadow-lg p-8 mb-12">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">ट्रेनिंग का उद्देश्य</h2>
+            <p class="text-gray-600 leading-relaxed">
+                हर मॉड्यूल में यह तय होगा कि इंटर्न को <strong>क्या सिखाना है</strong>, <strong>क्या समझाना है</strong>, और <strong>कौन से टूल/डेमो</strong> से ट्रेनिंग दी जाएगी।
+            </p>
+        </div>
+
+        <!-- Module 1 -->
+        <div class="module-card module-1 bg-white rounded-lg shadow-lg p-8 mb-8">
+            <div class="flex items-center mb-6">
+                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                    <span class="text-2xl">📘</span>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-800">Module 1: मशीनों की जानकारी</h2>
+            </div>
+            
+            <div class="bg-blue-50 rounded-lg p-4 mb-6">
+                <h3 class="font-semibold text-blue-800 mb-2 flex items-center">
+                    <span class="mr-2">🎯</span> उद्देश्य:
+                </h3>
+                <p class="text-blue-700">इंटर्न को सभी प्रकार की मशीनों की पहचान, कार्यविधि और इस्तेमाल की ट्रेनिंग देना।</p>
+            </div>
+
+            <h3 class="font-semibold text-gray-800 mb-4 flex items-center">
+                <span class="mr-2">📋</span> कंटेंट:
+            </h3>
+            
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">1. Masala Grinding Machine</h4>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li>• मोटर क्षमता, ग्राइंडिंग क्षमता (kg/hr)</li>
+                        <li>• स्टील vs आयरन बॉडी</li>
+                        <li>• घरेलू बनाम कमर्शियल उपयोग</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">2. Atta Chakki Machine</h4>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li>• Domestic vs Industrial</li>
+                        <li>• Multi-purpose chakki</li>
+                        <li>• Maintenance, Safety standard</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">3. Oil Expeller Machine</h4>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li>• Seed-wise output (सरसों, नारियल, मूंगफली)</li>
+                        <li>• कितनी quantity में कितना output</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">4. Packaging Machines</h4>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li>• Manual / Automatic</li>
+                        <li>• Sealing, Filling Mechanism</li>
+                        <li>• रोल फीड</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-yellow-50 rounded-lg p-4">
+                <h3 class="font-semibold text-yellow-800 mb-2 flex items-center">
+                    <span class="mr-2">🎥</span> डेमो / एक्टिविटी:
+                </h3>
+                <ul class="text-yellow-700 space-y-1">
+                    <li>• सभी मशीनों की 2-3 मिनट की वीडियो</li>
+                    <li>• PDF catalogue दिखाना</li>
+                    <li>• Comparison chart बनवाना: Manual vs Automatic</li>
+                    <li>• एक Q&A Session</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Module 2 -->
+        <div class="module-card module-2 bg-white rounded-lg shadow-lg p-8 mb-8">
+            <div class="flex items-center mb-6">
+                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                    <span class="text-2xl">📘</span>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-800">Module 2: Loan Process & File Setup</h2>
+            </div>
+            
+            <div class="bg-green-50 rounded-lg p-4 mb-6">
+                <h3 class="font-semibold text-green-800 mb-2 flex items-center">
+                    <span class="mr-2">🎯</span> उद्देश्य:
+                </h3>
+                <p class="text-green-700">Loan scheme को समझना और कस्टमर की पूरी file बनाना सिखाना।</p>
+            </div>
+
+            <h3 class="font-semibold text-gray-800 mb-4 flex items-center">
+                <span class="mr-2">📋</span> कंटेंट:
+            </h3>
+            
+            <div class="space-y-6 mb-6">
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <h4 class="font-semibold text-gray-800 mb-3">1. UP CM Yuva Udyami Yojana (₹5 lakh)</h4>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <h5 class="font-medium text-gray-700 mb-2">पात्रता:</h5>
+                            <ul class="text-sm text-gray-600 space-y-1">
+                                <li>• आयु सीमा</li>
+                                <li>• शैक्षिक योग्यता</li>
+                                <li>• उत्तर प्रदेश निवासी</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 class="font-medium text-gray-700 mb-2">दस्तावेज़:</h5>
+                            <ul class="text-sm text-gray-600 space-y-1">
+                                <li>• आधार, PAN, पासबुक</li>
+                                <li>• शपथ पत्र, फोटो</li>
+                                <li>• शैक्षणिक प्रमाण पत्र</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mt-3 p-3 bg-green-100 rounded">
+                        <p class="text-sm text-green-800"><strong>विशेषता:</strong> ब्याज रहित ऋण, गारंटी सरकार की</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">2. File Creation & Bank Followup</h4>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li>• कस्टमर की पूरी फाइल कैसे बनानी है</li>
+                        <li>• रजिस्ट्रेशन कैसे करें</li>
+                        <li>• बैंक में संपर्क और Follow-up</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">3. MSME Loan (Optional Awareness)</h4>
+                    <p class="text-sm text-gray-600">Mudra Loan / PMEGP – यह अलग प्लान है, Optional awareness के तौर पर बताना</p>
+                </div>
+            </div>
+
+            <div class="bg-yellow-50 rounded-lg p-4">
+                <h3 class="font-semibold text-yellow-800 mb-2 flex items-center">
+                    <span class="mr-2">📝</span> डेमो / एक्टिविटी:
+                </h3>
+                <ul class="text-yellow-700 space-y-1">
+                    <li>• 1 dummy कस्टमर का फॉर्म भरवाना</li>
+                    <li>• Online Portal walkthrough</li>
+                    <li>• Bank conversation script sharing</li>
+                    <li>• Document checklist template देना</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Module 3 -->
+        <div class="module-card module-3 bg-white rounded-lg shadow-lg p-8 mb-8">
+            <div class="flex items-center mb-6">
+                <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mr-4">
+                    <span class="text-2xl">📘</span>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-800">Module 3: पैकेजिंग सामग्री और स्टैम्प प्रोसेस</h2>
+            </div>
+            
+            <div class="bg-amber-50 rounded-lg p-4 mb-6">
+                <h3 class="font-semibold text-amber-800 mb-2 flex items-center">
+                    <span class="mr-2">🎯</span> उद्देश्य:
+                </h3>
+                <p class="text-amber-700">कस्टमर को रेडीमेड पैकेट्स और स्टैम्प सेवा की जानकारी देना, इंटर्न को ये समझाना कि कैसे पैकेट्स का सुझाव दें।</p>
+            </div>
+
+            <h3 class="font-semibold text-gray-800 mb-4 flex items-center">
+                <span class="mr-2">📋</span> कंटेंट:
+            </h3>
+            
+            <div class="space-y-6 mb-6">
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <h4 class="font-semibold text-gray-800 mb-3">1. Packaging Size & Type</h4>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <h5 class="font-medium text-gray-700 mb-2">Powdered masala:</h5>
+                            <p class="text-sm text-gray-600">10g, 50g, 100g (with zipper / laminated)</p>
+                        </div>
+                        <div>
+                            <h5 class="font-medium text-gray-700 mb-2">अन्य उत्पाद:</h5>
+                            <p class="text-sm text-gray-600">Khade masale, pulses, flour, oil sachets</p>
+                        </div>
+                    </div>
+                    <div class="mt-3 p-3 bg-amber-100 rounded">
+                        <p class="text-sm text-amber-800"><strong>गुणवत्ता:</strong> Food grade material vs local</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">2. Stamping Process</h4>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li>• Mohr lagana (Brand Name, FSSAI No., Batch No., MRP etc.)</li>
+                        <li>• Mohr setup (Hand stamp + Inkpad / Manual roller)</li>
+                        <li>• Raw material: rubber stamp, ink, stamp pad, layout design</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">3. Material Supply Process</h4>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li>• कस्टमर को कैसे समय पर supply करना है</li>
+                        <li>• एक टेम्पलेट बनाना – कस्टमर क्या चाहता है</li>
+                        <li>• कौन सा पैकेट, कितना stock</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-yellow-50 rounded-lg p-4">
+                <h3 class="font-semibold text-yellow-800 mb-2 flex items-center">
+                    <span class="mr-2">🧪</span> डेमो / एक्टिविटी:
+                </h3>
+                <ul class="text-yellow-700 space-y-1">
+                    <li>• Sample पैकेट और स्टैम्प दिखाना</li>
+                    <li>• 2 kgs पैकेजिंग material की cost calculation</li>
+                    <li>• एक कस्टमर की पैकेजिंग need का फॉर्म भरवाना</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Module 4 -->
+        <div class="module-card module-4 bg-white rounded-lg shadow-lg p-8 mb-8">
+            <div class="flex items-center mb-6">
+                <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mr-4">
+                    <span class="text-2xl">📘</span>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-800">Module 4: Branding, Website & Social Media</h2>
+                <div class="ml-auto bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">
+                    ₹3000 Package
+                </div>
+            </div>
+            
+            <div class="bg-red-50 rounded-lg p-4 mb-6">
+                <h3 class="font-semibold text-red-800 mb-2 flex items-center">
+                    <span class="mr-2">🎯</span> उद्देश्य:
+                </h3>
+                <p class="text-red-700">इंटर्न को यह समझाना कि कैसे ₹3000 में एक local ब्रांड को launch-ready बना सकते हैं।</p>
+            </div>
+
+            <h3 class="font-semibold text-gray-800 mb-4 flex items-center">
+                <span class="mr-2">📋</span> कंटेंट:
+            </h3>
+            
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">1. Logo Design</h4>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li>• Canva tool से ready logo बनाना</li>
+                        <li>• Agriculture/food theme</li>
+                        <li>• Color, Font, Tagline कैसे चुनें</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">2. Bill Book / Brochure</h4>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li>• Canva में invoice format बनाना</li>
+                        <li>• Banner: 2x3 ft basic business banner</li>
+                        <li>• Professional design</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">3. Social Media Setup</h4>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li>• Facebook Page, Instagram Business</li>
+                        <li>• Google My Business</li>
+                        <li>• Cover photo, bio, contact add करना</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">4. Website Creation</h4>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li>• Free Google Site या Wix site setup</li>
+                        <li>• 5-page site (About, Products, Contact)</li>
+                        <li>• WhatsApp Button integration</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-yellow-50 rounded-lg p-4">
+                <h3 class="font-semibold text-yellow-800 mb-2 flex items-center">
+                    <span class="mr-2">📱</span> डेमो / एक्टिविटी:
+                </h3>
+                <ul class="text-yellow-700 space-y-1">
+                    <li>• Canva में एक logo design प्रैक्टिस कराना</li>
+                    <li>• एक dummy Facebook page बनवाना</li>
+                    <li>• Free website template setup</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Summary Section -->
+        <div class="bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg p-8 text-center">
+            <h2 class="text-2xl font-bold mb-4">ट्रेनिंग पूर्ण होने पर</h2>
+            <p class="text-lg opacity-90 mb-6">
+                इंटर्न सभी चार सेवाओं में expert बन जाएगा और कस्टमर को complete solution provide कर सकेगा।
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full text-sm">मशीन एक्सपर्ट</span>
+                <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full text-sm">लोन कंसल्टेंट</span>
+                <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full text-sm">पैकेजिंग स्पेशलिस्ट</span>
+                <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full text-sm">ब्रांडिंग एक्सपर्ट</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-gray-400">© 2024 इंटर्न ट्रेनिंग प्रोग्राम - सभी अधिकार सुरक्षित</p>
+        </div>
+    </footer>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'969c39d1c02a3b7f',t:'MTc1NDI5MTMzMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
