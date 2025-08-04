@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>यूपी युवा उद्यमिता प्रशिक्षण मॉड्यूल</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .progress-bar {
+            transition: width 0.5s ease;
+        }
+        
+        .module-content {
+            display: none;
+        }
+        
+        .module-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .sidebar-item {
+            transition: all 0.3s ease;
+        }
+        
+        .sidebar-item:hover {
+            background-color: #f3f4f6;
+            padding-left: 1.5rem;
+        }
+        
+        .sidebar-item.active {
+            background-color: #3b82f6;
+            color: white;
+            border-right: 4px solid #1d4ed8;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <div class="bg-white p-2 rounded-lg">
+                        <svg class="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.84L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.84l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold">यूपी युवा उद्यमिता प्रशिक्षण</h1>
+                        <p class="text-blue-100">रणनीतिक इंटर्न प्रशिक्षण ब्लूप्रिंट</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="bg-white bg-opacity-20 px-4 py-2 rounded-lg">
+                        <span class="text-sm">प्रगति: <span id="progress-text">0%</span></span>
+                        <div class="w-32 bg-white bg-opacity-30 rounded-full h-2 mt-1">
+                            <div id="progress-bar" class="progress-bar bg-yellow-400 h-2 rounded-full" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="w-80 bg-white shadow-lg">
+            <div class="p-6">
+                <h2 class="text-lg font-semibold text-gray-800 mb-4">प्रशिक्षण मॉड्यूल</h2>
+                <nav class="space-y-2">
+                    <div class="sidebar-item active p-3 rounded-lg cursor-pointer" onclick="showModule('executive-summary')">
+                        <div class="flex items-center space-x-3">
+                            <span class="w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold">1</span>
+                            <span class="font-medium">कार्यकारी सारांश</span>
+                        </div>
+                    </div>
+                    <div class="sidebar-item p-3 rounded-lg cursor-pointer" onclick="showModule('myuva-overview')">
+                        <div class="flex items-center space-x-3">
+                            <span class="w-8 h-8 bg-gray-100 text-gray-600 rounded-full flex items-center justify-center text-sm font-semibold">2</span>
+                            <span class="font-medium">MYUVA योजना विवरण</span>
+                        </div>
+                    </div>
+                    <div class="sidebar-item p-3 rounded-lg cursor-pointer" onclick="showModule('loan-details')">
+                        <div class="flex items-center space-x-3">
+                            <span class="w-8 h-8 bg-gray-100 text-gray-600 rounded-full flex items-center justify-center text-sm font-semibold">3</span>
+                            <span class="font-medium">ऋण विवरण</span>
+                        </div>
+                    </div>
+                    <div class="sidebar-item p-3 rounded-lg cursor-pointer" onclick="showModule('eligibility')">
+                        <div class="flex items-center space-x-3">
+                            <span class="w-8 h-8 bg-gray-100 text-gray-600 rounded-full flex items-center justify-center text-sm font-semibold">4</span>
+                            <span class="font-medium">पात्रता मानदंड</span>
+                        </div>
+                    </div>
+                    <div class="sidebar-item p-3 rounded-lg cursor-pointer" onclick="showModule('application')">
+                        <div class="flex items-center space-x-3">
+                            <span class="w-8 h-8 bg-gray-100 text-gray-600 rounded-full flex items-center justify-center text-sm font-semibold">5</span>
+                            <span class="font-medium">आवेदन प्रक्रिया</span>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-8">
+            <!-- Executive Summary Module -->
+            <div id="executive-summary" class="module-content active">
+                <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-blue-100 p-3 rounded-lg mr-4">
+                            <svg class="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <h2 class="text-3xl font-bold text-gray-800">I. कार्यकारी सारांश</h2>
+                    </div>
+                    
+                    <div class="prose max-w-none">
+                        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                            यह रिपोर्ट बहराइच और श्रावस्ती में युवाओं के बीच उद्यमिता को प्रभावी ढंग से सुविधाजनक बनाने के लिए दो इंटर्न को सशक्त बनाने हेतु एक व्यापक, एक सप्ताह की प्रशिक्षण योजना प्रस्तुत करती है।
+                        </p>
+                        
+                        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg mb-6">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-4">मुख्य उद्देश्य:</h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-start space-x-3">
+                                    <span class="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
+                                    <span class="text-gray-700">लाभार्थियों को मुख्यमंत्री युवा उद्यमी अभियान योजना (MYUVA) के ऋण आवेदन प्रक्रिया के माध्यम से मार्गदर्शन करना</span>
+                                </li>
+                                <li class="flex items-start space-x-3">
+                                    <span class="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
+                                    <span class="text-gray-700">मशीन प्रावधान, पैकेजिंग और ऑनलाइन ब्रांडिंग में उपयोगकर्ता की सहायक सेवाओं का लाभ उठाना</span>
+                                </li>
+                                <li class="flex items-start space-x-3">
+                                    <span class="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
+                                    <span class="text-gray-700">इंटर्न को सफल ग्राहक जुड़ाव चलाने और उपयोगकर्ता के राजस्व स्रोतों में सीधे योगदान करने के लिए आवश्यक ज्ञान और व्यावहारिक कौशल से लैस करना</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-green-50 border-l-4 border-green-400 p-6 rounded-r-lg">
+                            <h3 class="text-xl font-semibold text-green-800 mb-3">MYUVA योजना की मुख्य विशेषताएं:</h3>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <h4 class="font-semibold text-gray-800 mb-2">ऋण राशि</h4>
+                                    <p class="text-green-600 font-bold text-xl">₹5 लाख तक</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <h4 class="font-semibold text-gray-800 mb-2">ब्याज दर</h4>
+                                    <p class="text-green-600 font-bold text-xl">0% (ब्याज-मुक्त)</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <h4 class="font-semibold text-gray-800 mb-2">संपार्श्विक</h4>
+                                    <p class="text-green-600 font-bold text-xl">आवश्यक नहीं</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm">
+                                    <h4 class="font-semibold text-gray-800 mb-2">मार्जिन सब्सिडी</h4>
+                                    <p class="text-green-600 font-bold text-xl">10%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MYUVA Overview Module -->
+            <div id="myuva-overview" class="module-content">
+                <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-green-100 p-3 rounded-lg mr-4">
+                            <svg class="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <h2 class="text-3xl font-bold text-gray-800">II. मुख्यमंत्री युवा उद्यमी अभियान योजना (MYUVA) को समझना</h2>
+                    </div>
+                    
+                    <div class="prose max-w-none">
+                        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                            मुख्यमंत्री युवा उद्यमी अभियान योजना (MYUVA) उत्तर प्रदेश सरकार की एक प्रमुख पहल है, जो 21-40 वर्ष की आयु के पात्र युवाओं को व्यावसायिक ऋण प्रदान करती है।
+                        </p>
+                        
+                        <div class="bg-blue-50 p-6 rounded-lg mb-6">
+                            <h3 class="text-xl font-semibold text-blue-800 mb-4">योजना के मुख्य लाभ:</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-sm">
+                                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                                        <span class="text-blue-600 font-bold">₹</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">100% ब्याज-मुक्त ऋण</h4>
+                                        <p class="text-gray-600">₹5 लाख तक का पूर्ण ब्याज-मुक्त व्यावसायिक ऋण</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-sm">
+                                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                        <span class="text-green-600 font-bold">🔒</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">संपार्श्विक-मुक्त</h4>
+                                        <p class="text-gray-600">किसी भी प्रकार की गारंटी या संपार्श्विक की आवश्यकता नहीं</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-sm">
+                                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                                        <span class="text-purple-600 font-bold">%</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">10% मार्जिन मनी सब्सिडी</h4>
+                                        <p class="text-gray-600">परियोजना लागत पर अतिरिक्त 10% सब्सिडी</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-sm">
+                                    <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+                                        <span class="text-orange-600 font-bold">🛡️</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">CGTMSE कवरेज</h4>
+                                        <p class="text-gray-600">चार साल के लिए क्रेडिट गारंटी फंड ट्रस्ट कवरेज</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loan Details Module -->
+            <div id="loan-details" class="module-content">
+                <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-purple-100 p-3 rounded-lg mr-4">
+                            <svg class="w-8 h-8 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"/>
+                            </svg>
+                        </div>
+                        <h2 class="text-3xl font-bold text-gray-800">योजना का विस्तृत अवलोकन</h2>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="space-y-6">
+                            <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl">
+                                <h3 class="text-xl font-semibold text-blue-800 mb-4">ऋण की विशेषताएं</h3>
+                                <ul class="space-y-3">
+                                    <li class="flex items-center space-x-3">
+                                        <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+                                        <span class="text-gray-700">अधिकतम ऋण राशि: ₹5 लाख</span>
+                                    </li>
+                                    <li class="flex items-center space-x-3">
+                                        <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+                                        <span class="text-gray-700">ब्याज दर: 0% (पूर्णतः ब्याज-मुक्त)</span>
+                                    </li>
+                                    <li class="flex items-center space-x-3">
+                                        <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+                                        <span class="text-gray-700">संपार्श्विक: आवश्यक नहीं</span>
+                                    </li>
+                                    <li class="flex items-center space-x-3">
+                                        <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+                                        <span class="text-gray-700">चुकौती अवधि: लचीली शर्तें</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl">
+                                <h3 class="text-xl font-semibold text-green-800 mb-4">अतिरिक्त लाभ</h3>
+                                <ul class="space-y-3">
+                                    <li class="flex items-center space-x-3">
+                                        <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                                        <span class="text-gray-700">10% मार्जिन मनी सब्सिडी</span>
+                                    </li>
+                                    <li class="flex items-center space-x-3">
+                                        <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                                        <span class="text-gray-700">CGTMSE गारंटी कवरेज</span>
+                                    </li>
+                                    <li class="flex items-center space-x-3">
+                                        <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                                        <span class="text-gray-700">सरकारी गारंटर सुविधा</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-6">
+                            <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl">
+                                <h3 class="text-xl font-semibold text-purple-800 mb-4">बड़ी परियोजनाओं के लिए</h3>
+                                <p class="text-gray-700 mb-4">
+                                    ₹5 लाख से अधिक, ₹10 लाख तक की परियोजनाओं के लिए:
+                                </p>
+                                <ul class="space-y-2">
+                                    <li class="flex items-center space-x-3">
+                                        <span class="w-2 h-2 bg-purple-500 rounded-full"></span>
+                                        <span class="text-gray-700">पहले ₹5 लाख पर ब्याज-मुक्त लाभ</span>
+                                    </li>
+                                    <li class="flex items-center space-x-3">
+                                        <span class="w-2 h-2 bg-purple-500 rounded-full"></span>
+                                        <span class="text-gray-700">पहले ₹5 लाख पर सब्सिडी लाभ</span>
+                                    </li>
+                                    <li class="flex items-center space-x-3">
+                                        <span class="w-2 h-2 bg-purple-500 rounded-full"></span>
+                                        <span class="text-gray-700">बाकी राशि पर नियमित शर्तें</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-xl">
+                                <h3 class="text-xl font-semibold text-orange-800 mb-4">सुरक्षा गारंटी</h3>
+                                <p class="text-gray-700 mb-3">
+                                    यह ऋण चार साल के लिए सूक्ष्म और लघु उद्यमों के लिए क्रेडिट गारंटी फंड ट्रस्ट (CGTMSE) के तहत कवर किया जाता है।
+                                </p>
+                                <div class="bg-white p-4 rounded-lg">
+                                    <p class="text-sm text-gray-600">
+                                        <strong>महत्वपूर्ण:</strong> यह बैंकों को महत्वपूर्ण सुरक्षा प्रदान करता है और युवाओं के लिए व्यक्तिगत संपार्श्विक के बिना ऋण प्राप्त करना आसान बनाता है।
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Eligibility Module -->
+            <div id="eligibility" class="module-content">
+                <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-indigo-100 p-3 rounded-lg mr-4">
+                            <svg class="w-8 h-8 text-indigo-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <h2 class="text-3xl font-bold text-gray-800">युवा लाभार्थियों के लिए पात्रता मानदंड</h2>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-3 gap-6 mb-8">
+                        <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl text-center">
+                            <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-white text-2xl font-bold">21-40</span>
+                            </div>
+                            <h3 class="text-lg font-semibold text-blue-800 mb-2">आयु सीमा</h3>
+                            <p class="text-gray-700">21 से 40 वर्ष की आयु के युवा आवेदन कर सकते हैं</p>
+                        </div>
+                        
+                        <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl text-center">
+                            <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-white text-2xl">📚</span>
+                            </div>
+                            <h3 class="text-lg font-semibold text-green-800 mb-2">शैक्षणिक योग्यता</h3>
+                            <p class="text-gray-700">8वीं पास या समकक्ष न्यूनतम शिक्षा आवश्यक</p>
+                        </div>
+                        
+                        <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl text-center">
+                            <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-white text-2xl">🎓</span>
+                            </div>
+                            <h3 class="text-lg font-semibold text-purple-800 mb-2">कौशल प्रशिक्षण</h3>
+                            <p class="text-gray-700">मान्यता प्राप्त संस्थान से कौशल प्रमाण पत्र आवश्यक</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-r-lg">
+                            <h3 class="text-xl font-semibold text-yellow-800 mb-4">कौशल प्रशिक्षण आवश्यकताएं:</h3>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <ul class="space-y-2">
+                                    <li class="flex items-center space-x-3">
+                                        <span class="w-2 h-2 bg-yellow-500 rounded-full"></span>
+                                        <span class="text-gray-700">ODOP प्रशिक्षण</span>
+                                    </li>
+                                    <li class="flex items-center space-x-3">
+                                        <span class="w-2 h-2 bg-yellow-500 rounded-full"></span>
+                                        <span class="text-gray-700">विश्वकर्मा श्रम सम्मान योजना</span>
+                                    </li>
+                                </ul>
+                                <ul class="space-y-2">
+                                    <li class="flex items-center space-x-3">
+                                        <span class="w-2 h-2 bg-yellow-500 rounded-full"></span>
+                                        <span class="text-gray-700">SC/ST/OBC प्रशिक्षण योजनाएं</span>
+                                    </li>
+                                    <li class="flex items-center space-x-3">
+                                        <span class="w-2 h-2 bg-yellow-500 rounded-full"></span>
+                                        <span class="text-gray-700">अन्य मान्यता प्राप्त कौशल प्रमाणन</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-red-50 border-l-4 border-red-400 p-6 rounded-r-lg">
+                            <h3 class="text-xl font-semibold text-red-800 mb-4">महत्वपूर्ण शर्तें:</h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-start space-x-3">
+                                    <span class="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></span>
+                                    <span class="text-gray-700">आवेदक को किसी अन्य केंद्र या राज्य सरकार की योजना का लाभ नहीं मिल रहा होना चाहिए जिसमें ब्याज या पूंजी घटक शामिल हो</span>
+                                </li>
+                                <li class="flex items-start space-x-3">
+                                    <span class="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></span>
+                                    <span class="text-gray-700">पीएम स्वनिधि योजना का लाभ लेने वाले भी आवेदन कर सकते हैं (अपवाद)</span>
+                                </li>
+                                <li class="flex items-start space-x-3">
+                                    <span class="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></span>
+                                    <span class="text-gray-700">यह सुनिश्चित करता है कि लाभ समान रूप से वितरित हों और दोहरे लाभ को रोकता है</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Application Process Module -->
+            <div id="application" class="module-content">
+                <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-teal-100 p-3 rounded-lg mr-4">
+                            <svg class="w-8 h-8 text-teal-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <h2 class="text-3xl font-bold text-gray-800">आवेदन प्रक्रिया</h2>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">ऑनलाइन पोर्टल और दस्तावेज़ीकरण</h3>
+                        <p class="text-gray-700 mb-6">
+                            आवेदन प्रक्रिया पूरी तरह से ऑनलाइन है और निम्नलिखित पोर्टल के माध्यम से की जा सकती है:
+                        </p>
+                        
+                        <div class="grid md:grid-cols-2 gap-6 mb-8">
+                            <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl">
+                                <h4 class="text-lg font-semibold text-blue-800 mb-3">MSME पोर्टल</h4>
+                                <div class="bg-white p-4 rounded-lg mb-4">
+                                    <p class="text-blue-600 font-mono text-sm">msme.up.gov.in</p>
+                                </div>
+                                <p class="text-gray-700 text-sm">मुख्य सरकारी पोर्टल जहां सभी MSME संबंधी सेवाएं उपलब्ध हैं</p>
+                            </div>
+                            
+                            <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl">
+                                <h4 class="text-lg font-semibold text-green-800 mb-3">CM-YUVA पोर्टल</h4>
+                                <div class="bg-white p-4 rounded-lg mb-4">
+                                    <p class="text-green-600 font-mono text-sm">msme.cmyuva.org.in</p>
+                                </div>
+                                <p class="text-gray-700 text-sm">विशेष रूप से युवा उद्यमी योजना के लिए समर्पित पोर्टल</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-6 rounded-xl">
+                            <h4 class="text-lg font-semibold text-gray-800 mb-4">आवेदन प्रक्रिया के चरण:</h4>
+                            <div class="space-y-4">
+                                <div class="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-sm">
+                                    <div class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold">1</div>
+                                    <div>
+                                        <h5 class="font-semibold text-gray-800">ऑनलाइन पंजीकरण</h5>
+                                        <p class="text-gray-600 text-sm">पोर्टल पर खाता बनाएं और बुनियादी जानकारी भरें</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-sm">
+                                    <div class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold">2</div>
+                                    <div>
+                                        <h5 class="font-semibold text-gray-800">दस्तावेज़ अपलोड</h5>
+                                        <p class="text-gray-600 text-sm">आवश्यक दस्तावेज़ों को स्कैन करके अपलोड करें</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-sm">
+                                    <div class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold">3</div>
+                                    <div>
+                                        <h5 class="font-semibold text-gray-800">आवेदन सबमिट</h5>
+                                        <p class="text-gray-600 text-sm">सभी जानकारी की जांच के बाद आवेदन जमा करें</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-sm">
+                                    <div class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold">4</div>
+                                    <div>
+                                        <h5 class="font-semibold text-gray-800">बैंक संपर्क</h5>
+                                        <p class="text-gray-600 text-sm">स्वीकृति के बाद संबंधित बैंक से संपर्क करें</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="flex justify-between items-center mt-8">
+                <button id="prev-btn" onclick="previousModule()" class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
+                    ← पिछला मॉड्यूल
+                </button>
+                <div class="text-center">
+                    <span id="module-indicator" class="text-gray-600 font-medium">मॉड्यूल 1 of 5</span>
+                </div>
+                <button id="next-btn" onclick="nextModule()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-300">
+                    अगला मॉड्यूल →
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-gray-300">© 2024 यूपी युवा उद्यमिता प्रशिक्षण मॉड्यूल | उत्तर प्रदेश सरकार</p>
+            <p class="text-gray-400 text-sm mt-2">मुख्यमंत्री युवा उद्यमी अभियान योजना (MYUVA) के तहत</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentModule = 0;
+        const modules = ['executive-summary', 'myuva-overview', 'loan-details', 'eligibility', 'application'];
+        const moduleNames = ['कार्यकारी सारांश', 'MYUVA योजना विवरण', 'ऋण विवरण', 'पात्रता मानदंड', 'आवेदन प्रक्रिया'];
+
+        function showModule(moduleId) {
+            // Hide all modules
+            document.querySelectorAll('.module-content').forEach(module => {
+                module.classList.remove('active');
+            });
+            
+            // Show selected module
+            document.getElementById(moduleId).classList.add('active');
+            
+            // Update sidebar
+            document.querySelectorAll('.sidebar-item').forEach((item, index) => {
+                item.classList.remove('active');
+                const numberSpan = item.querySelector('span');
+                numberSpan.className = 'w-8 h-8 bg-gray-100 text-gray-600 rounded-full flex items-center justify-center text-sm font-semibold';
+            });
+            
+            // Find and activate current module
+            currentModule = modules.indexOf(moduleId);
+            const activeItem = document.querySelectorAll('.sidebar-item')[currentModule];
+            activeItem.classList.add('active');
+            const activeNumberSpan = activeItem.querySelector('span');
+            activeNumberSpan.className = 'w-8 h-8 bg-white text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold';
+            
+            // Update progress
+            updateProgress();
+            updateNavigation();
+        }
+
+        function nextModule() {
+            if (currentModule < modules.length - 1) {
+                currentModule++;
+                showModule(modules[currentModule]);
+            }
+        }
+
+        function previousModule() {
+            if (currentModule > 0) {
+                currentModule--;
+                showModule(modules[currentModule]);
+            }
+        }
+
+        function updateProgress() {
+            const progress = ((currentModule + 1) / modules.length) * 100;
+            document.getElementById('progress-bar').style.width = progress + '%';
+            document.getElementById('progress-text').textContent = Math.round(progress) + '%';
+            document.getElementById('module-indicator').textContent = `मॉड्यूल ${currentModule + 1} of ${modules.length}`;
+        }
+
+        function updateNavigation() {
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            
+            prevBtn.disabled = currentModule === 0;
+            nextBtn.disabled = currentModule === modules.length - 1;
+            
+            if (currentModule === modules.length - 1) {
+                nextBtn.textContent = 'प्रशिक्षण पूर्ण ✓';
+                nextBtn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+                nextBtn.classList.add('bg-green-600', 'hover:bg-green-700');
+            } else {
+                nextBtn.textContent = 'अगला मॉड्यूल →';
+                nextBtn.classList.remove('bg-green-600', 'hover:bg-green-700');
+                nextBtn.classList.add('bg-blue-600', 'hover:bg-blue-700');
+            }
+        }
+
+        // Initialize
+        updateProgress();
+        updateNavigation();
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' && currentModule < modules.length - 1) {
+                nextModule();
+            } else if (e.key === 'ArrowLeft' && currentModule > 0) {
+                previousModule();
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'969baad487314430',t:'MTc1NDI4NTQ3NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
